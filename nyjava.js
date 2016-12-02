@@ -23,11 +23,11 @@ $("#searchButton").click(function(event){
     var search = $("#searchTermBox").val().trim();
     var beginDate = $("#startYear").val().trim();
     var endDate = $("#endYear").val().trim();
-    var tempRecords = 5;
+    // var tempRecords = 5;
     // not working properly # of records button
-    // var recordsShow = $("#numberRecordsButton :selected").text();
+    var recordsShow = $("#numberRecordsButton").text();
     
-    // console.log("Records button: "+recordsShow);
+    console.log("Records button: "+recordsShow);
    
     // var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
     // url += '?' + $.param({
@@ -65,7 +65,7 @@ $("#searchButton").click(function(event){
     url: queryURL,
     method: 'GET',
     }).done(function(result) {
-    	console.log(url);
+    	// console.log(url);
         //Display articles in below area
         // console.log(result);
         // console.log(result.response.docs[0].headline.main);
@@ -73,7 +73,7 @@ $("#searchButton").click(function(event){
         // console.log(result.response.docs[0].snippet);
         $("#articlesHere").html("");
 
-        for(var i = 0; i < tempRecords; i++){
+        for(var i = 0; i < recordsShow; i++){
         	var newArticle = $("<div>");
         	var articleURL = result.response.docs[i].web_url;
         	console.log("Record"+i+ ": "+articleURL);
